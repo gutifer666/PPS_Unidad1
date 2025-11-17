@@ -8,7 +8,15 @@
 binario = input("Introduce un número binario: ")
 
 def esBinario(strbinario):
+    """
+    Verifica si una cadena representa un número binario válido.
     
+    Parámetros:
+        strbinario (str): Cadena que contiene el número binario.
+    
+    Retorna:
+        bool: True si la cadena es un número binario válido, False en caso contrario.
+    """
     es_zero_o_uno = True
 
     for i in range(len(strbinario)):
