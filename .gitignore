@@ -1,0 +1,26 @@
+# macOS general ignores
+.DS_Store
+.AppleDouble
+.LSOverride
+.VolumeIcon.icns
+.Icon?
+
+# Resource forks and metadata
+._*
+.AppleDB
+.AppleDesktop
+.metadata_never_index
+.com.apple.timemachine.donotpresent
+
+# macOS system folders
+.Spotlight-V100/
+.Trashes/
+.fseventsd/
+.DocumentRevisions-V100/
+.TemporaryItems/
+
+# Virtual Environments
+.env/
+.venv/
+env/
+venv/
