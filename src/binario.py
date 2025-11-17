@@ -4,8 +4,8 @@
 # Autor: Francisco Javier Gutiérrez Pérez
 # Fecha: 17/11/2025
 # ------------------------------ 
-
-binario = input("Introduce un número binario: ")
+def main():
+    binario = input("Introduce un número binario: ")
 
 def esBinario(strbinario):
     """
@@ -43,3 +43,7 @@ def deBinarioaDecimal(strbinario):
         decimal += digito * (2 ** i)
     
     return decimal
+
+# Para que los tests puedan importar las funciones sin ejecutar el main
+if __name__ == "__main__":
+    main()
