@@ -17,4 +17,21 @@ def esBinario(strbinario):
     
     return es_zero_o_uno
 
-print(esBinario(binario))
+def deBinarioaDecimal(strbinario):
+    """
+    Convierte una cadena que representa un número binario a decimal.
+
+    Parámetros:
+        strbinario (str): Cadena que contiene el número binario.
+
+    Retorna:
+        int: Valor decimal del número binario.
+    """
+    decimal = 0
+    longitud = len(strbinario)
+
+    for i in range(longitud):
+        digito = int(strbinario[longitud - 1 - i])
+        decimal += digito * (2 ** i)
+    
+    return decimal
