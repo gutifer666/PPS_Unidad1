@@ -6,6 +6,7 @@ de los ejercicios 2 y 3.
 """
 import unittest
 from src.binario import esBinario
+from src.lista import estaEnRango, estaEnLista
 
 class TestSuitUnitTest(unittest.TestCase):
 
@@ -35,6 +36,42 @@ class TestSuitUnitTest(unittest.TestCase):
         strbinario = 1010
         with self.assertRaises(TypeError):
             esBinario(strbinario)
+
+    # Pruebas para estaEnRango(valor, minimo, maximo)
+    def test_estaEnRango_parametrizado(self):
+        casos = [
+            # dentro del rango (inclusivo)
+            (1, 1, 20, True),
+            (20, 1, 20, True),
+            (10, 1, 20, True),
+            # fuera del rango
+            (0, 1, 20, False),
+            (21, 1, 20, False),
+            # rangos negativos
+            (-5, -10, -1, True),
+            (0, -10, -1, False),
+            # minimo > maximo
+            (5, 10, 1, False),
+            # comparar float con int
+            (5.0, 1, 10, True),
+        ]
+        for valor, minimo, maximo, esperado in casos:
+            with self.subTest(valor=valor, minimo=minimo, maximo=maximo):
+                self.assertEqual(estaEnRango(valor, minimo, maximo), esperado)
+
+    def test_estaEnRango_tipos_invalidos_lanzan_TypeError(self):
+        casos_invalidos = [
+            (None, 1, 10),     # None no es comparable con int
+            ("5", 1, 10),     # string e int
+            (5, "1", 10),     # minimo string
+            (5, 1, "10"),     # maximo string
+        ]
+        for valor, minimo, maximo in casos_invalidos:
+            with self.subTest(valor=valor, minimo=minimo, maximo=maximo):
+                with self.assertRaises(TypeError):
+                    estaEnRango(valor, minimo, maximo)
+
+    # Pruebas para estaEnLista(valor, lista)
 
 """
 Para lanzar los tests ejecutar:
