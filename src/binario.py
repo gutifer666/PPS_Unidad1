@@ -13,6 +13,10 @@ def esBinario(strbinario):
     Retorna: bool: True si la cadena es un número binario válido, False en caso contrario.
     """
 
+    # Verifica que el argumento sea una cadena de texto
+    if not isinstance(strbinario, str):
+        raise TypeError("El argumento 'strbinario' debe ser una cadena de texto")
+
     # La función all() devuelve True si todos los elementos de una secuencia son verdaderos
     return all(char in "01" for char in strbinario)
 

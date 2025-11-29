@@ -31,6 +31,10 @@ class TestSuitUnitTest(unittest.TestCase):
             with self.subTest(entrada=entrada):
                 self.assertEqual(esBinario(entrada), esperado)
 
+    def test_si_pasamos_un_entero_como_argumento_se_lanza_una_excepcion(self):
+        strbinario = 1010
+        with self.assertRaises(TypeError):
+            esBinario(strbinario)
 
 """
 Para lanzar los tests ejecutar:
