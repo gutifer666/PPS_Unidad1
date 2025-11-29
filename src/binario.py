@@ -1,49 +1,33 @@
-# ------------------------------ 
-# Script: binario.py 
-# Descripción: De Binario a Decimal
-# Autor: Francisco Javier Gutiérrez Pérez
-# Fecha: 17/11/2025
-# ------------------------------ 
-def main():
-    binario = input("Introduce un número binario: ")
+"""
+binario.py
+Programa que pide al usuario que introduzca un número binario e imprime por pantalla el número en formato decimal
+Ultima Modificación. 29/11/2025
+Autor. Francisco Javier Gutiérrez Pérez
+Dependencias: Ninguna
+"""
 
 def esBinario(strbinario):
     """
     Verifica si una cadena representa un número binario válido.
-    
-    Parámetros:
-        strbinario (str): Cadena que contiene el número binario.
-    
-    Retorna:
-        bool: True si la cadena es un número binario válido, False en caso contrario.
+    Parámetros: strbinario (str): Cadena que contiene el número binario.
+    Retorna: bool: True si la cadena es un número binario válido, False en caso contrario.
     """
-    es_zero_o_uno = True
 
-    for i in range(len(strbinario)):
-        if strbinario[i] != "0" and strbinario[i] != "1":
-            es_zero_o_uno = False
-    
-    return es_zero_o_uno
+    # La función all() devuelve True si todos los elementos de una secuencia son verdaderos
+    return all(char in "01" for char in strbinario)
 
-def deBinarioaDecimal(strbinario):
-    """
-    Convierte una cadena que representa un número binario a decimal.
+def ejecutarApp():
+    binario = input("Introduce un número binario: ")
 
-    Parámetros:
-        strbinario (str): Cadena que contiene el número binario.
+    if not esBinario(binario):
+        print("La cadena introducida no es un número binario válido")
+        return
 
-    Retorna:
-        int: Valor decimal del número binario.
-    """
-    decimal = 0
-    longitud = len(strbinario)
+    # Convierte el número binario a decimal utilizando la función int() con base 2
+    decimal = int(binario, 2)
 
-    for i in range(longitud):
-        digito = int(strbinario[longitud - 1 - i])
-        decimal += digito * (2 ** i)
-    
-    return decimal
+    print(f"El número binario {binario} en decimal es {decimal}")
 
-# Para que los tests puedan importar las funciones sin ejecutar el main
+# Para que los tests puedan lanzarse sin ejecutar el programa
 if __name__ == "__main__":
-    main()
+    ejecutarApp()

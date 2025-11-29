@@ -1,26 +1,19 @@
 # macOS general ignores
 .DS_Store
-.AppleDouble
-.LSOverride
-.VolumeIcon.icns
-.Icon?
 
-# Resource forks and metadata
-._*
-.AppleDB
-.AppleDesktop
-.metadata_never_index
-.com.apple.timemachine.donotpresent
+# IDE
+.idea/
+.vscode/
+__pycache__/
 
-# macOS system folders
-.Spotlight-V100/
-.Trashes/
-.fseventsd/
-.DocumentRevisions-V100/
-.TemporaryItems/
-
-# Virtual Environments
-.env/
+# Entorno Virtual
 .venv/
-env/
-venv/
+
+# Archivos compilados de Python
+*.pyc
+
+# Distribución y build (opcional pero recomendado)
+dist/
+build/
+*.egg-info/
+

@@ -5,33 +5,35 @@ Este archivo contiene los tests unitarios para las funciones
 de los ejercicios 2 y 3.
 """
 import unittest
-from src.binario import esBinario, deBinarioaDecimal
+from src.binario import esBinario
 
 class TestSuitUnitTest(unittest.TestCase):
 
-    # Pruebas para esBinario
+    # Pruebas para esBinario() parametrizado
+    def test_esBinario(self):
+        casos_de_prueba = {
+            "101010": True,
+            "0000": True,
+            "1111": True,
+            "10201": False,
+            "abcde": False,
+            "2": False,
+            "01a01": False,
+            "": True,  # Cadena vacía, se considera válida
+            " ": False, # Espacio en blanco se considera inválido
+            "01" * 1000000: True,
+            "\n1010": False,
+            "101ó0": False,
+            "💡": False,
+        }
 
-    def test_esBinario_casos_validos(self):
-        
-        self.assertTrue(esBinario("1001")) # Ejemplo del enunciado
-        self.assertTrue(esBinario("111111"))
-        self.assertTrue(esBinario("000000"))
-        self.assertTrue(esBinario("1"))
-        self.assertTrue(esBinario("0"))
-        self.assertTrue(esBinario("1010101010"))
-    
-    def test_esBinario_casos_invalidos(self):
+        for entrada, esperado in casos_de_prueba.items():
+            with self.subTest(entrada=entrada):
+                self.assertEqual(esBinario(entrada), esperado)
 
-        self.assertFalse(esBinario("Hola"))  # Ejemplo del enunciado
-        self.assertFalse(esBinario("1021"))
-        self.assertFalse(esBinario("10 10")) # Con un espacio
-        self.assertFalse(esBinario("abc"))
-        self.assertFalse(esBinario("1.0")) # Con un punto
-        self.assertFalse(esBinario("101a"))
 
-if __name__ == "__main__":
-    """
-    Ejecutar el archivo con: python -m unittest discover tests -v
-    (Desde la carpeta raíz del proyecto)
-    """
-    unittest.main()
+"""
+Para lanzar los tests ejecutar:
+python -m unittest discover tests -v
+(Desde la carpeta raíz del proyecto)
+"""
