@@ -72,7 +72,29 @@ class TestSuitUnitTest(unittest.TestCase):
                     estaEnRango(valor, minimo, maximo)
 
     # Pruebas para estaEnLista(valor, lista)
-
+    def test_estaEnLista_parametrizado(self):
+        casos = [
+            # presentes / ausentes
+            (3, [1, 2, 3], True),
+            (4, [1, 2, 3], False),
+            # strings
+            ("a", ["a", "b"], True),
+            ("a", ["A", "b"], False),
+            # booleanos e igualdad con enteros
+            (True, [True, False], True),
+            (1, [True, False], True),   # True == 1 → True
+            (0, [False], True),         # False == 0 → True
+            # None y lista vacía
+            (None, [None, 0], True),
+            (5, [], False),
+            # tipos distintos no son iguales
+            ("5", [5], False),
+            # duplicados
+            (2, [1, 2, 2, 3], True),
+        ]
+        for valor, lista, esperado in casos:
+            with self.subTest(valor=valor, lista=lista):
+                self.assertEqual(estaEnLista(valor, lista), esperado)
 """
 Para lanzar los tests ejecutar:
 python -m unittest discover tests -v
